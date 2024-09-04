@@ -336,6 +336,11 @@ footer {
     font-size: 14px;
 }
 
+.add-new-form {
+    margin:0 auto 40px;
+    max-width: 600px;
+}
+
 .add-new-form input,
 .add-new-form select,
 .add-new-form fieldset {
@@ -361,4 +366,16 @@ footer {
     padding: 8px;
     outline: 0;
     border: 0;
+}
+
+.add-new-form .btn {
+    width: 20%;
+    padding: 8px;
+    margin-top: 20px;
+}
+
+@media (max-width: 300px) {
+    .add-new-form .btn {
+        width: 100%;
+    }
 }
