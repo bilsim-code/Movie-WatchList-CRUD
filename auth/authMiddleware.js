@@ -4,7 +4,7 @@ const authMiddleware = async(req, res, next) => {
     try {
         const token = req.cookies.token;
         if(!token) {
-            return res.json({success: false, message: "Middleware Error"})
+            return res.redirect('/login')
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

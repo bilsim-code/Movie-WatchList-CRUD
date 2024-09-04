@@ -88,7 +88,29 @@ route.post("/register", async (req, res) => {
 //GET /dashboard
 route.get('/dashboard', authMiddleware, async(req, res) => {
     try {
-        res.render('/admin/dashboard')
+        const userId = req.userId;// Get userId  from the req as set by authMiddleware
+        const userData = await userModel.findById(userId);
+        const movieData = await movieModel.find()
+        const locals = {
+            title: "Welcome to your Dashboard",
+            description: "Here, you can add, edit or delete your movies."
+        }
+        
+        ///if no user is found, redirect to the login page:
+        if(!userData) {
+            return res.redirect('/login');
+        }
+        res.render('admin/dashboard', {locals, userData, movieData})
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: "Error"});
+    }
+})
+
+//GET /add-new
+route.get('/add-new', authMiddleware, async(req, res) => {
+    try {
+        res.render('admin/add-new')
     } catch (error) {
         console.log(error);
         res.json({success: false, message: "Error"});

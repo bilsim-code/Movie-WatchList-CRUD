@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watchlist | Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/adminNav.ejs') %>
+    <div class="container dashboard">
+        <h2 class="heading"><%= locals.title %>, <span class="username"><%= userData.username %></span></h2>
+        <p class="description"><%= locals.description %></p>
+        <div class="btn-container">
+          <button class="btn">
+            <a href="/add-new">+ Add New Movie</a>
+        </button>  
+        </div>
+
+        <ul class="dashboard-ul">
+            <% movieData.forEach(movie => { %>
+             <li>
+               <!--  <img src="" alt=""> -->
+                 <a href="/movie/<%= movie._id %>" class="title">
+                    <span class="movie-title"><%= movie.title %></span>
+                 </a>
+                <div class="left-btns">
+                    <a href="/edit-post" class="btn">Edit</a>
+                    <form action="/delete-post/<%= movie._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn">Delete</button>
+                    </form>
+
+                </div>
+             </li>
+            <% }) %>
+        </ul>
+        
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>

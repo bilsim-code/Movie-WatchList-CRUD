@@ -26,6 +26,10 @@ const movieSchema = new Schema({
     type: String,
     required: true,
   },
+  updatedAt: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const movieModel = mongoose.model("movies", movieSchema);

@@ -6,6 +6,7 @@ const adminRoute = require('./routes/adminRoute.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODBURI)
 .then(() => {
@@ -19,7 +20,8 @@ mongoose.connect(process.env.MONGODBURI)
 app.set('view engine', 'ejs')
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 //cookie-parser
 app.use(cookieParser());
