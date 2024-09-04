@@ -88,7 +88,7 @@ route.get("/dashboard", authMiddleware, async (req, res) => {
   try {
     const userId = req.userId; // Get userId  from the req as set by authMiddleware
     const userData = await userModel.findById(userId);
-    const movieData = await movieModel.find().sort({updatedAt: -1});
+    const movieData = await movieModel.find().sort({ updatedAt: -1 });
     const locals = {
       title: "Welcome to your Dashboard",
       description: "Here, you can add, edit or delete your movies.",
@@ -127,18 +127,52 @@ route.post("/add-new", authMiddleware, async (req, res) => {
       status,
       description,
     });
-    res.redirect('/dashboard');
-    
+    res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
   }
 });
 
-//GET edit-movie
-route.get('/edit-movie', authMiddleware, async(req, res) => {
+//GET edit-movie/:id
+route.get("/edit-movie/:id", authMiddleware, async (req, res) => {
   try {
-    res.render('admin/edit-movie')
+    const id = req.params.id;
+    const movie = await movieModel.findById({ _id: id });
+    res.render("admin/edit-movie", { movie });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+});
+
+//PUT edit-movie/:id
+route.put("/edit-movie/:id", authMiddleware, async (req, res) => {
+  try {
+    const id = req.params.id;
+    await movieModel.findByIdAndUpdate(id, {
+      title: req.body.title,
+      genre: req.body.genre,
+      year: req.body.year,
+      rating: req.body.rating,
+      status: req.body.status,
+      description: req.body.description,
+      updatedAt: Date.now(),
+    });
+
+    res.redirect(`/edit-movie/${id}`); 
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+});
+
+//DELETE delete-movie/:id
+route.delete('/delete-movie/:id', authMiddleware, async(req, res) => {
+  try {
+    const id = req.params.id;
+    await movieModel.deleteOne({_id: id});
+    res.redirect('/dashboard')
     
   } catch (error) {
     console.log(error);

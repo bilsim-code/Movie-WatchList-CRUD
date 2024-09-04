@@ -9,7 +9,11 @@
   <body>
     <%- include('../partials/adminNav.ejs') %>
     <div class="container edit">
-      <form action="/edit-movie" method="POST" class="edit-new-form">
+      <form
+        action="/edit-movie/<%= movie._id %>?_method=PUT"
+        method="POST"
+        class="add-new-form"
+      >
         <!--
              <label for="image"></label>
              <input type="file" name="" id=""> 
@@ -20,6 +24,7 @@
           name="title"
           id="title"
           placeholder="Enter the title"
+          value="<%= movie.title %>"
         />
         <label for="genre"><b>Genre: </b></label>
         <input
@@ -27,13 +32,27 @@
           name="genre"
           id="genre"
           placeholder="Enter the genre"
+          value="<%= movie.genre %>"
         />
         <label for="year"><b>Year: </b></label>
-        <input type="number" name="year" id="year" placeholder="Release year" />
+        <input
+          type="number"
+          name="year"
+          id="year"
+          placeholder="Release year"
+          value="<%= movie.year %>"
+        />
         <label for="rating"><b>Rating: </b></label>
-        <input type="text" name="rating" id="rating" placeholder="eg. 5.0/10" />
+        <input
+          type="text"
+          name="rating"
+          id="rating"
+          placeholder="eg. 5.0/10"
+          value="<%= movie.rating %>"
+        />
         <label for="status"><b>Status: </b></label>
         <select name="status" id="status">
+            <option value="">** choose status **</option>
           <option value="watched">Watched</option>
           <option value="watching">Currently Watching</option>
           <option value="pending">Pending</option>
@@ -45,7 +64,7 @@
             id="description"
             cols="30"
             rows="5"
-          ></textarea>
+          ><%= movie.description %></textarea>
         </fieldset>
 
         <button type="submit" class="btn">Update</button>

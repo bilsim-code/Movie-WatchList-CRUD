@@ -25,8 +25,8 @@
                     <span class="movie-title"><%= movie.title %></span>
                  </a>
                 <div class="left-btns">
-                    <a href="/edit-movie" class="btn">Edit</a>
-                    <form action="/delete-post/<%= movie._id %>?_method=DELETE" method="POST">
+                    <a href="/edit-movie/<%= movie._id %>" class="btn">Edit</a>
+                    <form action="/delete-movie/<%= movie._id %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn">Delete</button>
                     </form>
 
