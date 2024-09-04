@@ -74,7 +74,7 @@ route.post("/register", async (req, res) => {
       password: hashedPassword,
       email,
     });
-    res.json({ success: true, data });
+    res.redirect('/login')
   } catch (error) {
     if (error.code === 11000) {
       return res.json({ success: false, message: "User already exists" });
@@ -178,6 +178,12 @@ route.delete('/delete-movie/:id', authMiddleware, async(req, res) => {
     console.log(error);
     res.json({success: false, message: "Error"});
   }
+})
+
+//GET /logout
+route.get('/logout', authMiddleware, (req, res) => {
+  res.clearCookie('token');
+  res.redirect("/login")
 })
 
 module.exports = route;
