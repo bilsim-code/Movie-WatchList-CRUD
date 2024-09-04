@@ -227,7 +227,7 @@ footer {
     flex-direction: column;
     gap: 20px;
     border-radius: 3px;
-    box-shadow: -2px -2px 2px #ccc ;
+    box-shadow: -2px -2px 2px #ccc;
 }
 
 .login-container h3 {
@@ -262,7 +262,7 @@ footer {
 }
 
 .login-container .register-span {
-    color:rgb(247, 8, 59)
+    color: rgb(247, 8, 59)
 }
 
 .login-container .btn {
@@ -285,7 +285,7 @@ footer {
 }
 
 .dashboard .username {
-    color:rgb(4, 197, 4)
+    color: rgb(4, 197, 4)
 }
 
 .btn-container {
@@ -294,7 +294,7 @@ footer {
     margin-top: 40px;
 }
 
-.dashboard .btn a{
+.dashboard .btn a {
     color: #fff;
 }
 
@@ -334,4 +334,31 @@ footer {
 .dashboard-ul .left-btns .btn {
     font-family: serif;
     font-size: 14px;
+}
+
+.add-new-form input,
+.add-new-form select,
+.add-new-form fieldset {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    outline: none
+}
+
+.add-new-form input:focus,
+.add-new-form select:focus,
+.add-new-form fieldset:focus {
+    border: 1px solid #333
+}
+
+.add-new-form fieldset {
+    padding: 0;
+}
+
+.add-new-form textarea {
+    width: 100%;
+    padding: 8px;
+    outline: 0;
+    border: 0;
 }
