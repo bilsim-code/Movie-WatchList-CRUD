@@ -41,4 +41,6 @@ route.get("/movie/:id", async (req, res) => {
   }
 });
 
+//GET /search
+
 module.exports = route;
