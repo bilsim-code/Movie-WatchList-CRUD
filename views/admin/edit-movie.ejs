@@ -1,16 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Checklist | Edit</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
     <%- include('../partials/adminNav.ejs') %>
     <div class="container edit">
-        
+      <form action="/edit-movie" method="POST" class="edit-new-form">
+        <!--
+             <label for="image"></label>
+             <input type="file" name="" id=""> 
+                -->
+        <label for="title"><b>Title: </b></label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter the title"
+        />
+        <label for="genre"><b>Genre: </b></label>
+        <input
+          type="text"
+          name="genre"
+          id="genre"
+          placeholder="Enter the genre"
+        />
+        <label for="year"><b>Year: </b></label>
+        <input type="number" name="year" id="year" placeholder="Release year" />
+        <label for="rating"><b>Rating: </b></label>
+        <input type="text" name="rating" id="rating" placeholder="eg. 5.0/10" />
+        <label for="status"><b>Status: </b></label>
+        <select name="status" id="status">
+          <option value="watched">Watched</option>
+          <option value="watching">Currently Watching</option>
+          <option value="pending">Pending</option>
+        </select>
+        <fieldset>
+          <legend id="description">Description</legend>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="5"
+          ></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn">Update</button>
+      </form>
     </div>
     <%- include('../partials/footer.ejs') %>
-</body>
+  </body>
 </html>

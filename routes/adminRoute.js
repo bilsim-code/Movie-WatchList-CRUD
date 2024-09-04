@@ -135,4 +135,15 @@ route.post("/add-new", authMiddleware, async (req, res) => {
   }
 });
 
+//GET edit-movie
+route.get('/edit-movie', authMiddleware, async(req, res) => {
+  try {
+    res.render('admin/edit-movie')
+    
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: "Error"});
+  }
+})
+
 module.exports = route;
