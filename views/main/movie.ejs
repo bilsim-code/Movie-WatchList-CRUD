@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watchlist | post/<%= data._id %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="container">
+      <div class="movie-container">
+        <h2><b>Title: </b><%= data.title %></h2>
+        <ul>
+          <li><b>Genre: </b><%= data.genre %></li>
+          <li><b>Release Year: </b><%= data.year %></li>
+          <li><b>Rating: </b><%= data.rating %></li>
+          <li><b>Status: </b><%= data.status %></li>
+          <li class="desc"><b>Description: </b><span><%= data.description %></span></li>
+        </ul>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

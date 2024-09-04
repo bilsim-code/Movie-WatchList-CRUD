@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+}
+
+.btn {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    padding: 6px;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.nav {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "logo left" "ul ul";
+    padding: 10px 20px;
+    box-shadow: 2px 2px 10px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 600px) {
+    .nav {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "logo ul left";
+    }
+}
+
+
+.nav .logo {
+    grid-area: logo;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 18px;
+    border: 2.5px solid #000;
+    padding: 4px;
+    border-radius: 2px;
+    width: fit-content;
+    transition: all 0s ease-in-out;
+    cursor: pointer
+}
+
+
+.nav .logo:hover {
+    border-width: 3px
+}
+
+.nav .logo a {
+    color: rgb(247, 8, 59)
+}
+
+.nav-ul {
+    grid-area: ul;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-ul li a {
+    font-size: 20px;
+    color: #333;
+    transition: all .5s linear;
+}
+
+.nav-ul li a:hover {
+    color: #000;
+}
+
+.left-btns {
+    grid-area: left;
+    display: flex;
+    align-items: flex;
+    gap: 20px
+}
+
+.left-btns .btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 550;
+}
+
+.left-btns .btn a {
+    color: #fff;
+    font-weight: 550;
+}
+
+.left-btns .btn .search-img {
+    width: 16px
+}
+
+@media (max-width: 330px) {
+    .nav .logo {
+        font-size: 14px;
+        padding: 2px;
+    }
+
+    .left-btns {
+        gap: 4px
+    }
+}
+
+.locals-title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.locals-description {
+    text-align: center;
+}
+
+footer {
+    background: #333;
+    color: whitesmoke;
+    padding: 10px;
+    text-align: right;
+}
+
+.movies-ul {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    padding: 0 10px;
+    box-shadow: 2px 2px 4px;
+}
+
+.movies-ul li {
+    padding: 10px 0;
+}
+
+
+.movies-ul li:not(:last-child) {
+    border-bottom: 1px solid;
+}
+
+.movies-ul li a {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.movies-ul li a:hover {
+    color: #464646;
+}
+
+.movie-title {
+    font-size: 20px;
+}
+
+.movie-year {
+    color: #333
+}
+
+.movie-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+.movie-left img {
+    width: 60px
+}
+
+@media (max-width: 500px) {
+    .movies-ul li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px
+    }
+
+    .movie-title {
+        font-size: 18px;
+    }
+}
+
+.movie-container {
+    min-height: 100vh;
+}
+
+.movie-container h2 {
+    margin-bottom: 10px;
+}
+
+.movie-container ul {
+    list-style: disc;
+    list-style-position: inside;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.login-container {
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto 40px;
+    background: whitesmoke;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 3px;
+    box-shadow: -2px -2px 2px #ccc ;
+}
+
+.login-container h3 {
+    text-align: end;
+    margin-bottom: 20px;
+    color: #636363;
+}
+
+.login-container label {
+    color: #636363
+}
+
+.login-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+}
+
+.login-container hr {
+    width: 50%;
+    margin: auto
+}
+
+.login-container input:focus {
+    outline-color: rgb(247, 8, 59)
+}
+
+.login-container .login-span {
+    color: rgb(4, 197, 4)
+}
+
+.login-container .register-span {
+    color:rgb(247, 8, 59)
+}
+
+.login-container .btn {
+    width: 25%;
+    border-radius: 6px;
+    padding: 8px;
+    font-weight: 550;
+}
+
+.login-container .btn:hover {
+    color: wheat
+}

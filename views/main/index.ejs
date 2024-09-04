@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watchlist | Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="container">
+      <h2 class="locals-title"><%= locals.title %></h2>
+      <p class="locals-description"><%= locals.description %></p>
+      <ul class="movies-ul">
+        <% data.forEach(movie => { %>
+        <li>
+            <a href="/movie/<%= movie._id %>">
+                <span class="movie-title"><%= movie.title %></span>
+                <span class="movie-year">Release Year: <%= movie.year %></span>
+                <span class="movie-left">
+                    <img src="/images/rating_starts.png" alt="">
+                    <span><%= movie.rating %></span>
+                </span>
+            </a>
+        </li>  
+        <% }) %>
+       
+      </ul>
+
+      <a href="/?page=<%= nextPage %>"><% if (nextPage !== 1) { %>
+        View Next Page &rarr;
+      <% } else{ %>
+        &larr;View Previous Page
+     <% } %>
+      
+       
+    </a>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
