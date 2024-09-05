@@ -9,6 +9,7 @@
   <body>
     <%- include('../partials/adminNav.ejs') %>
     <div class="container edit">
+      <h2 style="margin-bottom: 10px; font-size: 12px;">Edit Movie/<%= movie._id %></h2>
       <form
         action="/edit-movie/<%= movie._id %>?_method=PUT"
         method="POST"
