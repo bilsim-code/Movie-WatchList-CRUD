@@ -152,7 +152,9 @@ route.get("/edit-movie/:id", authMiddleware, async (req, res) => {
 route.put("/edit-movie/:id", authMiddleware, async (req, res) => {
   try {
     const id = req.params.id;
-    await movieModel.findByIdAndUpdate(id, {
+    const userId = req.userId; //ensure that the user can only edit their own movies
+   const movie = await movieModel.findByIdAndUpdate({_id: id, userId},//include userId in the filter
+       {
       title: req.body.title,
       genre: req.body.genre,
       year: req.body.year,
@@ -160,7 +162,13 @@ route.put("/edit-movie/:id", authMiddleware, async (req, res) => {
       status: req.body.status,
       description: req.body.description,
       updatedAt: Date.now(),
-    });
+    },
+  {new: true},
+);
+
+if(!movie) {
+  return res.json({success: false, message: "Movie not found or you do not have permission to edit this movie"});
+}
 
     res.redirect(`/edit-movie/${id}`); 
   } catch (error) {
