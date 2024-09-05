@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 const movieRoute = require('./routes/movieRoute');
 const adminRoute = require('./routes/adminRoute.js');
 const session = require('express-session');
