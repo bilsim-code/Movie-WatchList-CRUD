@@ -8,7 +8,7 @@ route.get("/", async (req, res) => {
     const locals = {
       title: "My Movies",
       description:
-        "See your movies here, including movies you have watched, currently watching and completed watching ",
+        "Recommended movies based on other users.To add your own movies, please Login or Signup.",
     };
 
     const page = parseInt(req.query.page) || 1;

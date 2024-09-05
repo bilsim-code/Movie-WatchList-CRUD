@@ -276,6 +276,10 @@ footer {
     color: wheat
 }
 
+.dashboard {
+    min-height: 80vh;
+}
+
 .dashboard .heading {
     text-align: center;
 }

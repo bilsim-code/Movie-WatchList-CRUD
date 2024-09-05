@@ -88,7 +88,7 @@ route.get("/dashboard", authMiddleware, async (req, res) => {
   try {
     const userId = req.userId; // Get userId  from the req as set by authMiddleware
     const userData = await userModel.findById(userId);
-    const movieData = await movieModel.find().sort({ updatedAt: -1 });
+    const movieData = await movieModel.find({userId}).sort({ updatedAt: -1 });
     const locals = {
       title: "Welcome to your Dashboard",
       description: "Here, you can add, edit or delete your movies.",
@@ -181,7 +181,8 @@ if(!movie) {
 route.delete('/delete-movie/:id', authMiddleware, async(req, res) => {
   try {
     const id = req.params.id;
-    await movieModel.deleteOne({_id: id});
+    const userId = req.userId;
+   const result = await movieModel.deleteOne({_id: id, userId});
     res.redirect('/dashboard')
     
   } catch (error) {
