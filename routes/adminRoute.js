@@ -119,6 +119,7 @@ route.get("/add-new", authMiddleware, async (req, res) => {
 route.post("/add-new", authMiddleware, async (req, res) => {
   try {
     const { title, genre, year, rating, status, description } = req.body;
+    const userId = req.userId; //get the user's ID from the request.
     const data = await movieModel.create({
       title,
       genre,
@@ -126,6 +127,7 @@ route.post("/add-new", authMiddleware, async (req, res) => {
       rating,
       status,
       description,
+      userId, //link movie to the user
     });
     res.redirect("/dashboard");
   } catch (error) {
